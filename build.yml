@@ -1,0 +1,36 @@
+---
+- hosts: localhost
+  connection: local
+  gather_facts: no
+  tasks:
+  become: yes
+  become_method: sudo
+  tasks:
+    - name: Install pip
+      apt:
+        name: python3-pip
+        update_cache: yes
+        state: present
+      
+    - name: install docker-py
+      pip: name=docker-py
+
+    - name: build docker image
+      docker_image:
+        build:
+          path: ./docker
+        name: anagram-image
+        source: build
+
+    - name: create docker Container
+      docker_container:
+        name: anagram-image
+        image: anagram-image
+        state: present
+        mounts:
+          source: /home/robert/Desktop/interview
+
+
+
+
+    
