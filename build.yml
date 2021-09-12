@@ -5,31 +5,38 @@
   tasks:
   become: yes
   become_method: sudo
+  vars:
+    str1: "{{word1}}"
+    str2: "{{word2}}"
   tasks:
-    - name: Install pip
-      apt:
-        name: python3-pip
-        update_cache: yes
-        state: present
-      
-    - name: install docker-py
-      pip: name=docker-py
-
-    - name: build docker image
+    - name: Build Docker Image
       docker_image:
         build:
-          path: ./docker
+          path: .
         name: anagram-image
         source: build
+        state: present
+        force: 1
 
-    - name: create docker Container
+    - name: Run Command inside Anagram-Image Container
       docker_container:
         name: anagram-image
         image: anagram-image
-        state: present
-        mounts:
-          source: /home/robert/Desktop/interview
+        command: ["python3","anagram-py.py", "{{str1}}", "{{str2}}"]
+        detach: yes
+      register: result_of_action
 
+
+
+
+
+
+
+
+
+
+
+    
 
 
 
