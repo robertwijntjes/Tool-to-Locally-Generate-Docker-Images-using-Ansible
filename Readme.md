@@ -21,3 +21,7 @@ docker logs anagram-image
 * Some things are supported and some arent, and some just dont work even if it is supported.
 * An issue with 'docker' and 'docker-py' exists, follow the suggestions to debug it.
 
+
+#### Video of its execution on Linux Mint Environment 
+* https://vimeo.com/manage/videos/604039023
+
