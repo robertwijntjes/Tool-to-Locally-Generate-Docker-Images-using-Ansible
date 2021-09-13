@@ -5,18 +5,13 @@
 * The extra vars are used in the python file within the docker container
 
 ```
-
-sudo ansible-playbook -i hosts build.yml --extra-vars "word1=apple word2=appledsdsdafds"
-
+sudo ansible-playbook -i hosts build.yml --extra-vars "word1=<PLACEHOLDER> word2=<PLACEHOLDER>"
 ```
 
 ### Logging
 * You can check the output of the python file by running the following:
 ```
-
 docker logs anagram-image
-
-
 ```
 
 
